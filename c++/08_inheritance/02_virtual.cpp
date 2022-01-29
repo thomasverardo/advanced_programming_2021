@@ -1,7 +1,7 @@
 #include <ap_error.hpp>
 #include <iostream>
 
-struct Animal {
+struct Animal { //it's an abstract class because it has a virtual function
   unsigned int age;
   double weight;
 
@@ -17,6 +17,7 @@ struct Animal {
   }
 
   virtual ~Animal() {}  // why? see file 03_virtual_destructor.cc
+  //virtual desctuctor is a best practic. If your class is abstract, you should do
 };
 
 struct Dog : public Animal {

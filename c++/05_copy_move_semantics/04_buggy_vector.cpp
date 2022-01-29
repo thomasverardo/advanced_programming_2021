@@ -35,7 +35,7 @@ int main() {
     std::cout << x << " ";
   std::cout << std::endl;
 
-  Vector<int> v2{v1};  // default copy constructor
+  Vector<int> v2{v1};  // default (compiler-generated) copy constructor
 
   std::cout << "v2 after default copy ctor: ";
   for (const auto x : v2)

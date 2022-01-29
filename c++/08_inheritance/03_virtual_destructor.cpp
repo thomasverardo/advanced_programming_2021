@@ -11,7 +11,9 @@ struct Derived : public Base {
 };
 
 int main() {
-  { Derived d; }
+  { Derived d; }  
+  //costructor: top to bottom --> first base
+  //desctructor: bottom to top --> first derived
 
   std::cout << "\n\npointers\n";
   Base* p = new Derived;
@@ -19,3 +21,5 @@ int main() {
 
   return 0;
 }
+
+//sizeof (child) >= sizeof(parent)
