@@ -14,10 +14,10 @@ In this project, you must write a pool for fast stacks. The pool stores each nod
 
 ```c++
   stack_pool<int, std::size_t> pool{};
-  auto l = pool.new_stack();
+  auto l = pool.new_stack(); 
   // l == pool.end() == std::size_t(0)
-  l = pool.push(42,l);
-  // l == std::size_t(1)
+  l = pool.push(42,l);  //pool[0]
+  // l == std::size_t(1)  //l=1=1+idx --> address of the node
   pool.value(l) = 77;
 ```
 
@@ -29,12 +29,12 @@ The pool maintains a stack of free nodes, i.e., available positions in the vecto
   l = pool.push(10,l); // l == std::size_t(1)
   l = pool.push(11,l); // l == std::size_t(2) <-- later, this node will be deleted
   
-  auto l2 = pool.new_stack();
+  auto l2 = pool.new_stack(); //l2==0??
   l2 = pool.push(20,l2); // l2 == std::size_t(3)
   
   l = pool.pop(l); // that node is deleted, so it is added to free_nodes
   
-  l2 = pool.push(21,l2); // l2 == std::size_t(2)
+  l2 = pool.push(21,l2); // l2 == std::size_t(2) 
 ```
 
 Here is the class template (without the `noexcept`s, remember to use them). The following functions **must be implemented**, and you don't have to change the names. Of course, you are free to implement more private and public methods. Remember to write a good class for iterators to avoid code duplication for `iterator` and `const_iterator`.
@@ -47,9 +47,9 @@ class stack_pool{
     N next;
   };
   std::vector<node_t> pool;
-  using stack_type = N;
+  using stack_type = N;  //what stack is it
   using value_type = T;
-  using size_type = typename std::vector<node_t>::size_type;
+  using size_type = typename std::vector<node_t>::size_type; //unsigned int (> 0)
   stack_type free_nodes; // at the beginning, it is empty
   
   node_t& node(stack_type x) noexcept { return pool[x-1]; }
