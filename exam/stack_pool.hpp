@@ -136,6 +136,12 @@ class stack_pool{
   }
 
   // return node(x).next;
+  /**
+   * @brief 
+   * 
+   * @param x 
+   * @return stack_type& 
+   */
   stack_type& next(stack_type x){
     check_empty(x);
     return node(x).next;
@@ -183,16 +189,18 @@ class stack_pool{
     //input ostream if we want to write on file
   void print_stack(std::ostream& os, const stack_type x) {
     check_empty(x);
+    // for (auto i : x)
     for (auto i = begin(x); i != end(x); ++i)
       os<<"value: "<< *i<<"\n";
     }
 
 
-  void elem_stack(const stack_type x){
+  std::size_t elem_stack(const stack_type x){
     std::size_t count{0};
+    // for (auto i : x)
     for (auto i = begin(x); i != end(x); ++i)
       ++count;
-    std::cout<<"the number of elements in the stack is "<<count<<std::endl;
+    return count;
   }
 
 

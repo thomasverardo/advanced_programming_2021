@@ -43,7 +43,7 @@ int main(){
 
     pool.print_stack(std::cout, l2);
 
-    pool.elem_stack(l2);
+    std::cout<<"the number of elements in the stack is "<<pool.elem_stack(l2)<<std::endl;
 
 
 }
